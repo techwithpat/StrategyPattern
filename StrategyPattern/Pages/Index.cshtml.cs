@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using StrategyPattern.Models;
+using StrategyPattern.Services;
 
 namespace StrategyPattern.Pages
 {
@@ -9,12 +10,11 @@ namespace StrategyPattern.Pages
 
         public IndexModel(ILogger<IndexModel> logger)
         {
-            _logger = logger;
+            _logger = logger;           
         }
 
         public void OnGet()
         {
-
         }
     }
 }

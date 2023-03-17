@@ -1,0 +1,74 @@
+﻿@page
+@model StrategyPattern.Pages.ContactModel
+@{
+}
+
+<div class="text-center">
+    <div class="d-flex justify-content-between">
+        <div>
+            Total records: @Model.Contacts.Count
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Export
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-export-type="json">JSON</a></li>
+                <li><a class="dropdown-item" href="#" data-export-type="csv">CSV</a></li>
+                <li><a class="dropdown-item" href="#" data-export-type="xml">XML</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model.Contacts)
+                {
+                    <tr>
+                        <th scope="row">@contact.Name</th>
+                        <td>@contact.Email</td>
+                        <td>@contact.Phone</td>
+                        <td>@contact.Address</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.dropdown-menu a').click(function (e) {
+            e.preventDefault();
+            var fileType = $(this).data('export-type');
+            $.ajax({
+                url: '?handler=DownloadFile',
+                type: 'GET',
+                data: { fileType: fileType },
+                contentType: "application/json",
+                responseType: 'blob',
+                success: function (data) {
+                    console.log(data);
+                    // handle success
+                    var blob=new Blob([data]);
+                    var link=document.createElement('a');
+                    link.href=window.URL.createObjectURL(blob);
+                    link.download="contacts" + "." + fileType;
+                    link.click();
+                },
+                error: function () {
+                    // handle error
+                    alert('Something wrong happened!');
+                }
+            });
+        });
+    });
+</script>

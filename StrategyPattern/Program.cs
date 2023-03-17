@@ -1,7 +1,11 @@
+using StrategyPattern.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IExportService, ExportService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 var app = builder.Build();
 
