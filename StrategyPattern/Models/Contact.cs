@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace StrategyPattern.Models
 {
@@ -9,6 +10,7 @@ namespace StrategyPattern.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         [XmlIgnore]
+        [JsonIgnore]
         public int Id { get; internal set; }
     }
 }

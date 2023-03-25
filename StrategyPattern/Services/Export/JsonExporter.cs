@@ -3,10 +3,12 @@ using StrategyPattern.Models;
 using System.Text.Json;
 using System.Text;
 
-namespace StrategyPattern.Services
+namespace StrategyPattern.Services.Export
 {
     public class JsonExporter : IExporter
     {
+        public string FileExtension => "json";
+
         public FileResult Export(List<Contact> contacts)
         {
             string json = JsonSerializer.Serialize(contacts);

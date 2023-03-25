@@ -1,8 +1,13 @@
 using StrategyPattern.Services;
+using StrategyPattern.Services.Export;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IExporter, CsvExporter>();
+builder.Services.AddScoped<IExporter, JsonExporter>();
+builder.Services.AddScoped<IExporter, XmlExporter>();
+
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IExportService, ExportService>();
 builder.Services.AddScoped<IContactService, ContactService>();

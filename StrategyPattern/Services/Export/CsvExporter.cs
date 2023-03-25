@@ -2,10 +2,12 @@
 using StrategyPattern.Models;
 using System.Text;
 
-namespace StrategyPattern.Services
+namespace StrategyPattern.Services.Export
 {
     public class CsvExporter : IExporter
     {
+        public string FileExtension => "csv";
+
         public FileResult Export(List<Contact> contacts)
         {
             MemoryStream stream = new();

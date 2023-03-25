@@ -7,7 +7,7 @@ namespace StrategyPattern.Services
     {
         private List<Contact> _contacts;
 
-        public ContactService() 
+        public ContactService()
         {
             _contacts = new List<Contact>();
         }

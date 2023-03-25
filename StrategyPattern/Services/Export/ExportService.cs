@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StrategyPattern.Models;
 
-namespace StrategyPattern.Services
+namespace StrategyPattern.Services.Export
 {
     public class ExportService : IExportService
     {
-        private readonly Dictionary<string, IExporter> _exporters = new()
+        private readonly Dictionary<string, IExporter> _exporters = new();        
+
+        public ExportService(IEnumerable<IExporter> exporters)
         {
-            { "csv", new CsvExporter() },
-            { "json", new JsonExporter() },
-            { "xml", new XmlExporter() }
-        };
+            foreach (var exporter in exporters)
+            {
+                _exporters.Add(exporter.FileExtension, exporter);
+            }
+        }
 
         public FileResult Export(string fileType, List<Contact> contacts)
         {
