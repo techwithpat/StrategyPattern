@@ -16,10 +16,7 @@ namespace StrategyPattern.Pages
             _exportService = exportService;
         }
 
-        public void OnGet()
-        {
-            Contacts = _contactService.GetContacts();
-        }
+        public void OnGet() => Contacts = _contactService.GetContacts();
 
         public FileResult OnGetDownloadFile(string fileType)
         {

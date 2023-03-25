@@ -3,8 +3,8 @@ using StrategyPattern.Models;
 
 namespace StrategyPattern.Services
 {
-    public interface IExportService
+    public interface IExporter
     {
-        FileResult Export(string fileType, List<Contact> contacts);       
+        FileResult Export(List<Contact> contacts);
     }
 }
