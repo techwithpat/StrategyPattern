@@ -4,7 +4,7 @@ This repository contains an implementation of the Strategy Pattern using C#. The
 
 ## Getting Started
 To get started, clone the repository to your local machine.<br/>
-Clone the repository: git clone https://github.com/techwithpat/StrategyPattern.git<br/>
+`git clone https://github.com/techwithpat/StrategyPattern.git`<br/>
 Once the repository has been cloned, open it in your preferred C# IDE (Visual Studio or Visual Studio Code).
 
 ## Video Tutorial
